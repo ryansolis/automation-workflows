@@ -7,6 +7,8 @@ interface Workflow {
   platform: string;
 }
 
+/* const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000"; // Fallback for local testing */
+
 const App: React.FC = () => {
   const [workflows, setWorkflows] = useState<Workflow[]>([]);
   const [search, setSearch] = useState("");
@@ -19,7 +21,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/workflows")
+      .get("https://automation-workflows-nvs2.onrender.com/api/workflows")
       .then((res) => {
         const data = res.data as Workflow[];
         setWorkflows(data);
